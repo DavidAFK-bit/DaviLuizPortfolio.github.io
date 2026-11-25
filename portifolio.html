@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davi Luiz | Desenvolvedor Full Stack</title>
+    <style>
+        /* Regra global que você já aprendeu: trava o tamanho das caixas */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a; /* Fundo escuro moderno */
+            color: #e2e8f0;
+            line-height: 1.6;
+            background-image: url('https://media.tenor.com/A09WwxMh-BMAAAAC/matrix.gif');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Cabeçalho / Hero */
+        header {
+            background-image: url('https://media.tenor.com/A09WwxMh-BMAAAAC/matrix.gif');
+            background-color: #e7e9ec;
+            border-bottom: 3px solid #36e909;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 20px auto;
+        }
+
+        .links-contato a {
+            display: inline-block;
+            background-color: #38bdf8;
+            color: #0f172a;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 6px;
+            margin: 5px;
+            transition: 0.2s;
+        }
+
+        .links-contato a:hover {
+            background-color: #7dd3fc;
+        }
+
+        /* Container principal que centraliza o conteúdo na tela */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            color: #38bdf8;
+            border-left: 4px solid #38bdf8;
+            padding-left: 12px;
+            margin-bottom: 20px;
+        }
+
+        /* Seção Sobre e Tecnologias */
+        .sobre-box {
+            background-color: rgba(237, 243, 241, 0.014);
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 40px;
+        }
+
+        .tags-tech {
+            margin-top: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #0f172a;
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 4px 4px 0 0;
+        }
+
+        /* Área dos Cards de Projetos (lado a lado) */
+        .projetos-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Espaço entre os cards */
+        }
+
+        .card-projeto {
+            background-color: rgba(237, 243, 241, 0.014);
+            border: 1px solid #334155;
+            border-top: 4px solid #38bdf8;
+            border-radius: 8px;
+            padding: 25px;
+            /* Faz cada card ocupar ~1/3 da largura, adaptando em telas menores */
+            flex: 1 1 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-projeto h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .card-projeto p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .card-projeto .tech-usada {
+            font-size: 0.8rem;
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid #1e293b;
+            margin-top: 50px;
+        }
+        .foto-perfil {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%; /* Deixa a caixa perfeitamente redonda */
+            object-fit: cover;  /* Evita que a foto fique esticada ou achatada */
+            border: 3px solid #38bdf8;
+            margin-bottom: 15px;
+        }
+        /* Estilo do Botão de Like */
+            .area-like {
+                margin-top: 20px;
+            }
+
+            .btn-like {
+                background-color: transparent;
+                color: #38bdf8;
+                border: 2px solid #38bdf8;
+                padding: 10px 22px;
+                font-size: 1rem;
+                font-weight: bold;
+                border-radius: 30px;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                transition: all 0.2s ease;
+            }
+
+            .btn-like:hover {
+                background-color: rgba(56, 189, 248, 0.15);
+                transform: scale(1.05);
+            }
+
+/* Estilo quando a pessoa já clicou no Like */
+            .btn-like.curtido {
+                background-color: #38bdf8;
+                color: #0f172a;
+            }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="imagens/fotoperfil.jpg" alt="Foto de Davi Luiz" class="foto-perfil">
+        <h1>Davi Luiz Coelho Sobrinho</h1>
+        <p>Estudante de Sistemas de Informação (UNA) | Foco em Desenvolvimento Full Stack, Java, Python e Banco de Dados SQL</p>
+        <div class="links-contato">
+            <a href="https://github.com/DavidAFK-bit" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/davi-luiz-9b67953a0/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+        <div class="links-contato">
+            <a href="https://api.whatsapp.com/send?phone=5531991124166" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a href="mailto:ldavi0613@gmail.com">Email</a>
+            <div class="area-like">
+    <button id="btnLike" class="btn-like" onclick="darLike()">
+        👍 Curtir Portfólio <span id="contadorLikes">...</span>
+    </button>
+</div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="sobre-box">
+            <h2>Sobre Mim</h2>
+            <p>
+                Graduando em Sistemas de Informação em Belo Horizonte, com foco na construção de aplicações web completas, modelagem de bancos de dados relacionais e boas práticas de versionamento com Git.
+            </p>
+            <div class="tags-tech">
+                <span class="tag">Java</span>
+                <span class="tag">Python</span>
+                <span class="tag">SQL Server / SQLite</span>
+                <span class="tag">HTML5 & CSS3</span>
+                <span class="tag">Git & GitHub</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>Projeto em Destaque</h2>
+            <div class="projetos-grid">
+                
+                <div class="card-projeto">
+                    <div>
+                        <h3>Automação de anúncios no Mercado Livre</h3>
+                        <p>Desenvolvida como Skill para o hermes agent, com integrações do tipo Google OAuth 2.0 , Google Drive API e Mercado Livre API.</p>
+                    </div>
+                    <span class="tech-usada">Python 3.14 • Hermes Agent • Google Gemini API • Mercado Livre API • Google Drive API • DDGS</span>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Desenvolvido por Davi Luiz • Belo Horizonte, MG</p>
+    </footer>
+<script>
+    // Identificador único do seu portfólio na API gratuita
+    const namespace = "daviluiz-portfolio-bh";
+    const key = "likes-totais";
+    const urlBase = `https://api.counterapi.dev/v1/${namespace}/${key}`;
+
+    const botao = document.getElementById("btnLike");
+    const contadorSpan = document.getElementById("contadorLikes");
+
+    // 1. Carrega o número atual de likes assim que a página abre
+    async function carregarLikes() {
+        try {
+            const resposta = await fetch(urlBase);
+            const dados = await resposta.json();
+            contadorSpan.innerText = `(${dados.count || 0})`;
+        } catch (erro) {
+            // Se o contador ainda não foi criado (0 likes), mostra 0
+            contadorSpan.innerText = "(0)";
+        }
+
+        // Verifica se esse visitante já curtiu antes
+        if (localStorage.getItem("jaCurtiuPortfolio") === "true") {
+            botao.classList.add("curtido");
+            botao.innerHTML = `❤️ Curtido <span id="contadorLikes">${contadorSpan.innerText}</span>`;
+        }
+    }
+
+    // 2. Soma +1 quando o visitante clica no botão
+    async function darLike() {
+        // Impede múltiplos likes da mesma pessoa
+        if (localStorage.getItem("jaCurtiuPortfolio") === "true") {
+            alert("Você já deixou seu like neste portfólio! Obrigado!");
+            return;
+        }
+
+        try {
+            const resposta = await fetch(`${urlBase}/up`);
+            const dados = await resposta.json();
+            
+            localStorage.setItem("jaCurtiuPortfolio", "true");
+            botao.classList.add("curtido");
+            botao.innerHTML = `❤️ Curtido <span id="contadorLikes">(${dados.count})</span>`;
+        } catch (erro) {
+            console.error("Erro ao registrar like:", erro);
+        }
+    }
+
+    carregarLikes();
+</script>
+</body>
+</html>
