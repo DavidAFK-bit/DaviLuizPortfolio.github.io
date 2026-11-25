@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Davi Luiz | Desenvolvedor Full Stack</title>
     <style>
-        /* Regra global que você já aprendeu: trava o tamanho das caixas */
+        /* trava o tamanho das caixas */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -46,8 +46,9 @@
 
         .links-contato a {
             display: inline-block;
-            background-color: #38bdf8;
-            color: #0f172a;
+            background-color: rgba(0, 0, 0, 0.15);
+            color: #ffffff;
+            border: 4px solid #3ba720;
             text-decoration: none;
             font-weight: bold;
             padding: 10px 20px;
@@ -76,8 +77,9 @@
 
         /* Seção Sobre e Tecnologias */
         .sobre-box {
-            background-color: rgba(237, 243, 241, 0.014);
-            border: 1px solid #334155;
+           background-color: rgba(0, 0, 0, 0.15);
+            color: #ffffff;
+            border: 4px solid #3ba720;
             border-radius: 8px;
             padding: 25px;
             margin-bottom: 40px;
@@ -89,9 +91,9 @@
 
         .tag {
             display: inline-block;
-            background-color: #0f172a;
-            border: 1px solid #38bdf8;
-            color: #38bdf8;
+            background-color: rgba(0, 0, 0, 0.15);
+            color: #fefffe;
+            border: 2px solid #3ba720;
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
@@ -106,9 +108,8 @@
         }
 
         .card-projeto {
-            background-color: rgba(237, 243, 241, 0.014);
-            border: 1px solid #334155;
-            border-top: 4px solid #38bdf8;
+            background-color: rgba(0, 0, 0, 0.15);
+            border: 4px solid #3ba720;
             border-radius: 8px;
             padding: 25px;
             /* Faz cada card ocupar ~1/3 da largura, adaptando em telas menores */
@@ -131,8 +132,11 @@
 
         .card-projeto .tech-usada {
             font-size: 0.8rem;
-            color: #38bdf8;
+            color: #ffffff;
             font-weight: bold;
+            border:#3ba720 2px solid;
+            padding: 5px 10px;
+            border-radius: 6px;
         }
 
         footer {
@@ -144,49 +148,61 @@
             margin-top: 50px;
         }
         .foto-perfil {
-            width: 140px;
-            height: 140px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%; /* Deixa a caixa perfeitamente redonda */
             object-fit: cover;  /* Evita que a foto fique esticada ou achatada */
-            border: 3px solid #38bdf8;
+            border: 3px solid #3ba720;
             margin-bottom: 15px;
         }
-        /* Estilo do Botão de Like */
-            .area-like {
-                margin-top: 20px;
-            }
+        /* Botão estilo Facebook */
+.area-like {
+    margin-top: 20px;
+}
 
-            .btn-like {
-                background-color: transparent;
-                color: #38bdf8;
-                border: 2px solid #38bdf8;
-                padding: 10px 22px;
-                font-size: 1rem;
-                font-weight: bold;
-                border-radius: 30px;
-                cursor: pointer;
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-                transition: all 0.2s ease;
-            }
+.btn-like {
+    background-color: #1877f2; /* Azul oficial do Facebook */
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: inherit;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
 
-            .btn-like:hover {
-                background-color: rgba(56, 189, 248, 0.15);
-                transform: scale(1.05);
-            }
+.btn-like:hover {
+    background-color: #24e20b;
+}
 
-/* Estilo quando a pessoa já clicou no Like */
-            .btn-like.curtido {
-                background-color: #38bdf8;
-                color: #0f172a;
-            }
+/* Visual depois de curtido (fica branco/cinza claro com texto azul) */
+.btn-like.curtido {
+    border: 4px solid #3ba720;
+    background-color: rgba(8, 8, 8, 0.2);
+    color: #f8f8f8;
+}
+
+.contador-badge {
+    background-color: rgba(10, 224, 46, 0.15);
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.btn-like.curtido .contador-badge {
+    background-color: rgba(248, 248, 248, 0.15);
+}
     </style>
 </head>
 <body>
 
     <header>
-        <img src="imagens/fotoperfil.jpg" alt="Foto de Davi Luiz" class="foto-perfil">
+        <img src="fotoperfil.jpg" alt="Foto de Davi Luiz" class="foto-perfil">
         <h1>Davi Luiz Coelho Sobrinho</h1>
         <p>Estudante de Sistemas de Informação (UNA) | Foco em Desenvolvimento Full Stack, Java, Python e Banco de Dados SQL</p>
         <div class="links-contato">
@@ -197,11 +213,15 @@
             <a href="https://api.whatsapp.com/send?phone=5531991124166" target="_blank" rel="noopener noreferrer">WhatsApp</a>
             <a href="mailto:ldavi0613@gmail.com">Email</a>
             <div class="area-like">
-    <button id="btnLike" class="btn-like" onclick="darLike()">
-        👍 Curtir Portfólio <span id="contadorLikes">...</span>
+   <div class="area-like">
+    <button type="button" id="btnLike" class="btn-like">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M2 20h2c.55 0 1-.45 1-1v-9c0-.55-.45-1-1-1H2v11zm19.83-7.12c.11-.25.17-.52.17-.8V11c0-1.1-.9-2-2-2h-5.5l.92-4.65c.05-.22.02-.46-.08-.66-.23-.45-.52-.86-.88-1.22L14 2 7.59 8.41C7.21 8.79 7 9.3 7 9.83v7.84C7 18.95 8.05 20 9.34 20h8.11c.7 0 1.36-.37 1.72-.97l2.66-6.15z"/>
+        </svg>
+        <span id="textoLike">Curtir</span>
+        <span id="contadorLikes" class="contador-badge">0</span>
     </button>
 </div>
-        </div>
     </header>
 
     <main class="container">
@@ -241,53 +261,60 @@
         <p>Desenvolvido por Davi Luiz • Belo Horizonte, MG</p>
     </footer>
 <script>
-    // Identificador único do seu portfólio na API gratuita
-    const namespace = "daviluiz-portfolio-bh";
-    const key = "likes-totais";
-    const urlBase = `https://api.counterapi.dev/v1/${namespace}/${key}`;
-
     const botao = document.getElementById("btnLike");
+    const textoLike = document.getElementById("textoLike");
     const contadorSpan = document.getElementById("contadorLikes");
 
-    // 1. Carrega o número atual de likes assim que a página abre
-    async function carregarLikes() {
-        try {
-            const resposta = await fetch(urlBase);
-            const dados = await resposta.json();
-            contadorSpan.innerText = `(${dados.count || 0})`;
-        } catch (erro) {
-            // Se o contador ainda não foi criado (0 likes), mostra 0
-            contadorSpan.innerText = "(0)";
-        }
+    const urlBase = "https://api.counterapi.dev/v2/daviluiz-portfolio-bh/likes-totais";
 
-        // Verifica se esse visitante já curtiu antes
-        if (localStorage.getItem("jaCurtiuPortfolio") === "true") {
+    let totalLikes = parseInt(localStorage.getItem("totalLikesSalvos")) || 0;
+    let jaCurtiu = localStorage.getItem("jaCurtiuPortfolio") === "true";
+
+    function atualizarTela() {
+        contadorSpan.textContent = totalLikes;
+        if (jaCurtiu) {
             botao.classList.add("curtido");
-            botao.innerHTML = `❤️ Curtido <span id="contadorLikes">${contadorSpan.innerText}</span>`;
+            textoLike.textContent = "Curtiu";
         }
     }
 
-    // 2. Soma +1 quando o visitante clica no botão
-    async function darLike() {
-        // Impede múltiplos likes da mesma pessoa
-        if (localStorage.getItem("jaCurtiuPortfolio") === "true") {
-            alert("Você já deixou seu like neste portfólio! Obrigado!");
-            return;
-        }
+    atualizarTela();
 
-        try {
-            const resposta = await fetch(`${urlBase}/up`);
-            const dados = await resposta.json();
-            
-            localStorage.setItem("jaCurtiuPortfolio", "true");
-            botao.classList.add("curtido");
-            botao.innerHTML = `❤️ Curtido <span id="contadorLikes">(${dados.count})</span>`;
-        } catch (erro) {
-            console.error("Erro ao registrar like:", erro);
-        }
-    }
+    // Carrega o total global
+    fetch(urlBase)
+        .then(res => res.json())
+        .then(dados => {
+            const contagem = dados.data ? dados.data.up_count : dados.count;
+            if (typeof contagem === "number" && contagem >= totalLikes) {
+                totalLikes = contagem;
+                localStorage.setItem("totalLikesSalvos", totalLikes);
+                atualizarTela();
+            }
+        })
+        .catch(() => {});
 
-    carregarLikes();
+    // Regista o clique
+    botao.addEventListener("click", function () {
+        if (jaCurtiu) return;
+
+        jaCurtiu = true;
+        totalLikes += 1;
+        localStorage.setItem("jaCurtiuPortfolio", "true");
+        localStorage.setItem("totalLikesSalvos", totalLikes);
+        atualizarTela();
+
+        fetch(`${urlBase}/up`)
+            .then(res => res.json())
+            .then(dados => {
+                const contagem = dados.data ? dados.data.up_count : dados.count;
+                if (typeof contagem === "number") {
+                    totalLikes = contagem;
+                    localStorage.setItem("totalLikesSalvos", totalLikes);
+                    atualizarTela();
+                }
+            })
+            .catch(() => {});
+    });
 </script>
 </body>
 </html>
