@@ -264,7 +264,8 @@
     const textoLike = document.getElementById("textoLike");
     const contadorSpan = document.getElementById("contadorLikes");
 
-    const urlBase = "https://api.counterapi.dev/v2/daviluiz-portfolio-bh/likes-totais";
+    const namespace = "davidafk-bit-portfolio";
+    const key = "likes";
 
     let totalLikes = parseInt(localStorage.getItem("totalLikesSalvos")) || 0;
     let jaCurtiu = localStorage.getItem("jaCurtiuPortfolio") === "true";
@@ -279,20 +280,19 @@
 
     atualizarTela();
 
-    // Carrega o total global
-    fetch(urlBase)
+    // 1. Busca o total atual na internet (sem somar)
+    fetch(`https://abacus.jasoncameron.dev/get/${namespace}/${key}`)
         .then(res => res.json())
         .then(dados => {
-            const contagem = dados.data ? dados.data.up_count : dados.count;
-            if (typeof contagem === "number" && contagem >= totalLikes) {
-                totalLikes = contagem;
+            if (typeof dados.value === "number") {
+                totalLikes = dados.value;
                 localStorage.setItem("totalLikesSalvos", totalLikes);
                 atualizarTela();
             }
         })
         .catch(() => {});
 
-    // Regista o clique
+    // 2. Soma +1 ao clicar (uma vez por navegador)
     botao.addEventListener("click", function () {
         if (jaCurtiu) return;
 
@@ -302,12 +302,11 @@
         localStorage.setItem("totalLikesSalvos", totalLikes);
         atualizarTela();
 
-        fetch(`${urlBase}/up`)
+        fetch(`https://abacus.jasoncameron.dev/hit/${namespace}/${key}`)
             .then(res => res.json())
             .then(dados => {
-                const contagem = dados.data ? dados.data.up_count : dados.count;
-                if (typeof contagem === "number") {
-                    totalLikes = contagem;
+                if (typeof dados.value === "number") {
+                    totalLikes = dados.value;
                     localStorage.setItem("totalLikesSalvos", totalLikes);
                     atualizarTela();
                 }
